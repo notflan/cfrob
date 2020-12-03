@@ -4,7 +4,7 @@
 test: test/test
 
 test/test: test/test.cpp
-	$(CXX) -I. --std=c++20 -Wall -pedantic $< -o $@
+	$(CXX) -I. --std=c++20 -Wall -Werror -pedantic $< -o $@
 	if strings $@ | grep Hello; then exit 1; fi
 	./$@
 	strings $@ | grep bOFFE >> /dev/null
