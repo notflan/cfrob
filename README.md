@@ -65,9 +65,20 @@ Also provided are `memfrob()` and `strfrob()` functions of our own for both stri
 
   constexpr const auto ctime = frob::strfrob<>("done at comptime, like the literal `_frob`"); // Explicit template `<>` is required here otherwise it overloads to the non `constexpr` functions, even in a `constexpr` context;
 }
-
-
 ```
+
+All functions (except the literal operator) are in the namespace `frob`.
+
+## Configuring
+By default we use the same mechanism as `memfrob()`: ROT13 via bitwise xor of the number 42.
+If you would like to use a different number for the bitwise xor, defined the constant `FROB_CONSTANT` before `#include`ing the header.
+
+``` c++
+#define FROB_CONSTANT 82
+#include "cfrob.hpp"
+```
+
+Note that the defined constant must fit in the range `0-255` inclusive.
 
 # Test
 Run `make test` to build and run the test that ensures the original string literal does not appear anywhere in the outputted binary. 
