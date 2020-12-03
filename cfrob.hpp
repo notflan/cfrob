@@ -9,6 +9,7 @@ namespace frob
 	}
 
 	template<std::size_t N>
+		requires(N > 0)
 	struct cfrob
 	{
 		char out[N]{};
@@ -18,11 +19,6 @@ namespace frob
 				out[i] = rot13((u8)sz[i]);
 			out[N-1] = 0;
 		}
-	};
-	template<>
-	struct cfrob<0>
-	{
-		char out[0]{};
 	};
 }
 

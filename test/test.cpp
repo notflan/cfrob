@@ -3,7 +3,12 @@
 
 #include <cfrob.hpp>
 
-const auto str = "Hello world."_frob;
+// Can be stored as `const char` array with compile-time size for optimal use.
+const auto str			= "Hello world."_frob; 
+constexpr const char* str2	= "Hello world."_frob;
+
+// Can also be stored as normal `const char*` string constant pointer.
+const char* str3		= "Hello world."_frob;
 
 int main()
 {
